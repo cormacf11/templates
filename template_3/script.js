@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener for feedback form submission
     if (feedbackForm) {
         feedbackForm.addEventListener('submit', function (e) {
+            console.log('Feedback form submitted');
             // Validate UK phone number format
             const phone = document.getElementById('phone').value;
             const phonePattern = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
@@ -87,4 +88,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
         localStorage.setItem('feedbackFormData', JSON.stringify(feedbackFormData));
     });
+});
+
+$(document).ready(function() {
+    const $themeToggle = $('#theme-toggle');
+
+    // Function to apply the theme
+    const applyTheme = (theme) => {
+        console.log(`Applying theme: ${theme}`);
+        if (theme === 'dark') {
+            $('body').addClass('dark-mode');
+            $themeToggle.text('Light Mode');
+            console.log('Dark mode applied');
+        } else {
+            $('body').removeClass('dark-mode');
+            $themeToggle.text('Dark Mode');
+            console.log('Dark mode removed');
+        }
+    };
+
+    // Event listener for the theme toggle button
+    $themeToggle.on('click', function() {
+        console.log('Theme toggle clicked');
+        const currentTheme = $('body').hasClass('dark-mode') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
+    // Check for saved user preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        // Set initial button text based on default theme
+        $themeToggle.text('Dark Mode');
+    }
 });

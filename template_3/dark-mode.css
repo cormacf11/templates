@@ -1,0 +1,41 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode header, 
+body.dark-mode footer {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode nav a {
+    color: #ffffff;
+}
+
+body.dark-mode button {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode input, 
+body.dark-mode textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+body.dark-mode .container {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+body.dark-mode #theme-toggle {
+    background-color: #333;
+    color: #f0f0f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode #theme-toggle:hover {
+    background-color: #444;
+}
