@@ -1,0 +1,175 @@
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --header-background: #222;
+    --header-text-color: #fff;
+    --hero-background: #fff;
+    --hero-text-color: #222;
+    --button-background: #00aaff;
+    --button-text-color: #fff;
+    --button-hover-background: #0088cc;
+    --footer-background: #222;
+    --footer-text-color: #fff;
+    --form-background: #fff;
+    --form-text-color: #333;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background: var(--header-background);
+    color: var(--header-text-color);
+    padding: 1em 0;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: var(--header-text-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: var(--hero-background);
+    color: var(--hero-text-color);
+    padding: 4em 0;
+    text-align: center;
+}
+
+.hero h2 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.hero p {
+    font-size: 1.2em;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5em 2em;
+    margin-top: 1em;
+    background: var(--button-background);
+    color: var(--button-text-color);
+    text-decoration: none;
+    border-radius: 0.3em;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--button-hover-background);
+}
+
+main {
+    padding: 2em 0;
+}
+
+footer {
+    background: var(--footer-background);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+form {
+    max-width: 600px;
+    margin: 2em auto;
+    background: var(--form-background);
+    padding: 1em 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 0.3em;
+}
+
+button {
+    width: 100%;
+    display: block;
+    padding: 0.8em;
+    background: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 0.3em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: var(--button-hover-background);
+}
+
+#theme-toggle {
+    width: 45px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0.5em;
+    background: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background: var(--button-hover-background);
+}
+
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-background: #1e1e1e;
+    --header-text-color: #ffffff;
+    --hero-background: #1e1e1e;
+    --hero-text-color: #ffffff;
+    --button-background: #bb86fc;
+    --button-text-color: #000000;
+    --button-hover-background: #3700b3;
+    --footer-background: #1e1e1e;
+    --footer-text-color: #ffffff;
+    --form-background: #2c2c2c;
+    --form-text-color: #e0e0e0;
+}
