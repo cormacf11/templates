@@ -38,3 +38,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Contact form data saved to localStorage
+document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contact-form');
+
+    // Load saved data from localStorage
+    const savedContactData = JSON.parse(localStorage.getItem('contactFormData'));
+    if (savedContactData) {
+        contactForm.name.value = savedContactData.name || '';
+        contactForm.email.value = savedContactData.email || '';
+        contactForm.address.value = savedContactData.address || '';
+        contactForm.phone.value = savedContactData.phone || '';
+    }
+
+    // Save data to localStorage on input change
+    contactForm.addEventListener('input', function () {
+        const contactFormData = {
+            name: contactForm.name.value,
+            email: contactForm.email.value,
+            address: contactForm.address.value,
+            phone: contactForm.phone.value
+        };
+
+        localStorage.setItem('contactFormData', JSON.stringify(contactFormData));
+    });
+});
+
+// Feedback form data saved to localStorage
+document.addEventListener('DOMContentLoaded', function () {
+    const feedbackForm = document.getElementById('feedbackForm');
+
+    // Load saved data from localStorage
+    const savedFeedbackData = JSON.parse(localStorage.getItem('feedbackFormData'));
+    if (savedFeedbackData) {
+        feedbackForm.name.value = savedFeedbackData.name || '';
+        feedbackForm.phone.value = savedFeedbackData.phone || '';
+        feedbackForm.message.value = savedFeedbackData.message || '';
+    }
+
+    // Save data to localStorage on input change
+    feedbackForm.addEventListener('input', function () {
+        const feedbackFormData = {
+            name: feedbackForm.name.value,
+            phone: feedbackForm.phone.value,
+            message: feedbackForm.message.value
+        };
+
+        localStorage.setItem('feedbackFormData', JSON.stringify(feedbackFormData));
+    });
+});
