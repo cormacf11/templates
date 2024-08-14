@@ -125,3 +125,27 @@ $(document).ready(function() {
         $themeToggle.text('Dark Mode');
     }
 });
+
+$(document).ready(function() {
+    // Function to update the countdown
+    function updateCountdown() {
+        const offerEndDate = new Date('September 16, 2024 23:59:00').getTime();
+        const now = new Date().getTime();
+        const timeRemaining = offerEndDate - now;
+
+        if (timeRemaining >= 0) {
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            $('#countdown').text(`${days}d ${hours}h ${minutes}m ${seconds}s remaining`);
+        } else {
+            $('#offer-banner').html('<h2>Offer Expired</h2><p>Sorry, this offer has expired.</p>');
+        }
+    }
+
+    // Update the countdown every second
+    setInterval(updateCountdown, 1000);
+});
+
