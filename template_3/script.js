@@ -149,3 +149,30 @@ $(document).ready(function() {
     setInterval(updateCountdown, 1000);
 });
 
+$(document).ready(function() {
+    let slideIndex = 0; // Initialize the slide index to 0
+    showSlides(); // Call the showSlides function to start the slideshow
+
+    // Function to display the slides in a carousel
+    function showSlides() {
+        const slides = $(".carousel-slide"); // Select all elements with the class 'carousel-slide'
+        
+        // Hide all slides
+        slides.each(function() {
+            $(this).hide(); // Hide the current slide
+        });
+
+        slideIndex++; // Increment the slide index
+
+        // If the slide index exceeds the number of slides, reset it to 1
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        // Show the current slide with a fade-in effect
+        slides.eq(slideIndex - 1).fadeIn(800); // Use eq() to select the current slide and fade it in over 800ms
+
+        // Set a timeout to call showSlides again after 3 seconds
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+});

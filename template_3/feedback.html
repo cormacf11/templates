@@ -11,31 +11,33 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="The Yellow Leaf Logo">
-        <h1>Feedback</h1>
+    <div class="page-container">
+        <header>
+            <img src="images/logo.png" alt="The Yellow Leaf Logo">
+            <h1>Feedback</h1>
 
-        <button id="theme-toggle"></button>
+            <button id="theme-toggle"></button>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="news.html">News</a>
-            <a href="feedback.html">Feedback</a>
-            <a href="contact-us.html">Contact Us</a>
-        </nav>
-    </header>
-    <h2>Feedback</h2>
-    <form id="feedbackForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="news.html">News</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="contact-us.html">Contact Us</a>
+            </nav>
+        </header>
+        <h2>Feedback</h2>
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-        <label for="phone">Phone Number (UK):</label>
-        <input type="text" id="phone" name="phone" required>
+            <label for="phone">Phone Number (UK):</label>
+            <input type="text" id="phone" name="phone" required>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
 
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
