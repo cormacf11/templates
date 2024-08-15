@@ -17,10 +17,27 @@ body.dark-mode button {
     color: #ffffff;
 }
 
-body.dark-mode input, 
-body.dark-mode textarea {
+body.dark-mode #submit-button {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+body.dark-mode #submit-button:hover {
+    background-color: #ffffff90;
+    color: #333333;
+}
+
+body.dark-mode form {
     background-color: #333333;
     color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+body.dark-mode input, 
+body.dark-mode textarea {
+    background-color: #ffffff;
+    color: #333333;
     border: 1px solid #444444;
 }
 
