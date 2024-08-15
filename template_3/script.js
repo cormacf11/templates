@@ -1,46 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Get references to the forms by their IDs
-    const feedbackForm = document.getElementById('feedbackForm');
-    const commentsForm = document.getElementById('commentsForm');
-    const contactForm = document.getElementById('contactForm');
-
-    // Add event listener for feedback form submission
-    if (feedbackForm) {
-        feedbackForm.addEventListener('submit', function (e) {
-            console.log('Feedback form submitted');
-            // Validate UK phone number format
-            const phone = document.getElementById('phone').value;
-            const phonePattern = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-            if (!phonePattern.test(phone)) {
-                alert('Please enter a valid UK phone number.');
-                e.preventDefault(); // Prevent form submission if validation fails
-            }
-        });
-    }
-
-    // Add event listener for contact form submission
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', (event) => {
-            // Validate form fields
-            const name = form.elements['name'].value;
-            const email = form.elements['email'].value;
-            const address = form.elements['address'].value;
-            const phone = form.elements['phone'].value;
-            const password = form.elements['password'].value;
-
-            // Validate UK phone number format
-            const phonePattern = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-
-            if (!phonePattern.test(phone)) {
-                alert('Please enter a valid 11-digit phone number.');
-                event.preventDefault(); // Prevent form submission if validation fails
-            }
-        });
-    }
-});
-
-// Contact form data saved to localStorage
 document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contact-form');
 
@@ -51,45 +8,64 @@ document.addEventListener('DOMContentLoaded', function () {
         contactForm.email.value = savedContactData.email || '';
         contactForm.address.value = savedContactData.address || '';
         contactForm.phone.value = savedContactData.phone || '';
+        contactForm.message.value = savedContactData.message || '';
     }
 
-    // Save data to localStorage on input change
-    contactForm.addEventListener('input', function () {
+    // Save data to localStorage before the user leaves the page
+    window.addEventListener('beforeunload', function () {
         const contactFormData = {
             name: contactForm.name.value,
             email: contactForm.email.value,
             address: contactForm.address.value,
-            phone: contactForm.phone.value
+            phone: contactForm.phone.value,
+            message: contactForm.message.value
         };
 
         localStorage.setItem('contactFormData', JSON.stringify(contactFormData));
     });
-});
 
-// Feedback form data saved to localStorage
-document.addEventListener('DOMContentLoaded', function () {
-    const feedbackForm = document.getElementById('feedbackForm');
-
-    // Load saved data from localStorage
-    const savedFeedbackData = JSON.parse(localStorage.getItem('feedbackFormData'));
-    if (savedFeedbackData) {
-        feedbackForm.name.value = savedFeedbackData.name || '';
-        feedbackForm.phone.value = savedFeedbackData.phone || '';
-        feedbackForm.message.value = savedFeedbackData.message || '';
+    // Function to validate email format
+    function validateEmail(email) {
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailPattern.test(email);
     }
 
-    // Save data to localStorage on input change
-    feedbackForm.addEventListener('input', function () {
-        const feedbackFormData = {
-            name: feedbackForm.name.value,
-            phone: feedbackForm.phone.value,
-            message: feedbackForm.message.value
-        };
+    // Function to validate phone number format
+    function validatePhone(phone) {
+        const phonePattern = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+        return phonePattern.test(phone);
+    }
 
-        localStorage.setItem('feedbackFormData', JSON.stringify(feedbackFormData));
+    // Clear form inputs on form submission if validation passes
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        const email = contactForm.email.value;
+        const phone = contactForm.phone.value;
+
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address.');
+            return; // Exit the function if the email is invalid
+        }
+
+        if (!validatePhone(phone)) {
+            alert('Please enter a valid phone number.');
+            return; // Exit the function if the phone number is invalid
+        }
+
+        // Clear the form inputs if validation passes
+        contactForm.name.value = '';
+        contactForm.email.value = '';
+        contactForm.address.value = '';
+        contactForm.phone.value = '';
+        contactForm.message.value = '';
+
+        // Clear the localStorage
+        localStorage.removeItem('contactFormData');
     });
 });
 
+// jQuery to handle theme toggle
 $(document).ready(function() {
     const $themeToggle = $('#theme-toggle');
 
@@ -126,6 +102,7 @@ $(document).ready(function() {
     }
 });
 
+// jQuery to handle countdown timer
 $(document).ready(function() {
     // Function to update the countdown
     function updateCountdown() {
@@ -149,6 +126,7 @@ $(document).ready(function() {
     setInterval(updateCountdown, 1000);
 });
 
+// jQuery to handle carousel slideshow
 $(document).ready(function() {
     let slideIndex = 0; // Initialize the slide index to 0
     showSlides(); // Call the showSlides function to start the slideshow
